@@ -64,26 +64,11 @@ docker compose up --build
 
 docker compose up --build -d
 
-Aguarde os containers iniciarem. Acesse pelo navegador (Mas ainda não use a calculdaora, é preciso rodar as migrations antes)
+Aguarde os containers iniciarem. Acesse pelo navegador:
 
 - **Frontend:** [http://localhost:8080](http://localhost:8080)
 
 Os comandos da calculadora funcionam tanto com o clique do mouse como digitando pelo teclado.
-
-### 5. Rodar as migrations do banco de dados
-Depois de executar docker compose up --build, o banco de dados vai estar rodando, assim como o backend.
-Mas, o Prisma ainda não criou automaticamente as tabelas no banco, então é necessário rodar manualmente as migrations dentro do container backend.
-
-Só é preciso rodar esse comando apenas na primeira vez para criar as tabelas no banco.
-
-# Aqui tu vai ta acessando o container do backend primeiramente
-docker exec -it backend sh
-# Aqui rodando as migrations
-npx prisma migrate dev --name init
-
-# Porque eu não automatizei isso no dockerfile?
-Automatizar isso no meu dockerfile exigiria garantir que o banco já estivesse pronto (o container do PostgreSQL já teria que ter iniciado), o que geralmente exige algum script de espera (wait-for-it.sh por exemplo). Poderia acontecer alguma imprevisibilidade e risco de falha na ordem de inicialização. Achei melhor ter que executar os comandos mesmo pra não dar problema.
-
 
 ## 🧮 Como usar
 - A calculadora permite somar, subtrair, multiplicar e dividir dois números.
