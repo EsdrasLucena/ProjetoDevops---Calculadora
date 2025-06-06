@@ -9,6 +9,7 @@ COPY package*.json ./
 
 # Instalando as dependências
 RUN npm install
+RUN npm i -g prisma
 
 # Copiando o restante do código
 COPY . .
