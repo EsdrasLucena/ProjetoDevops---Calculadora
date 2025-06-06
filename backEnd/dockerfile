@@ -4,11 +4,14 @@ FROM node:18
 # Defino o diretório de trabalho dentro do container
 WORKDIR /app
 
-# Aqui eu copio os arquivos do backend para o container
-COPY . .
+# Copio os arquivos de dependência primeiro e evito erros
+COPY package*.json ./
 
 # Instalando as dependências
 RUN npm install
+
+# Copiando o restante do código
+COPY . .
 
 # Expondo a porta que o backend usa
 EXPOSE 3001

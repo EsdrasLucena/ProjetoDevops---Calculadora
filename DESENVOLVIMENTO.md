@@ -16,7 +16,9 @@ A duração do projeto foi de 2 dias, como fiz sozinho, não utilizei metodologi
 . Dockerização de tudo isso (Segundo commit).
 . Por fim, criei o banco de dados e fiz as conexões necessárias (último commit).
 
-Apesar de ser a primeira experiência mexendo com docker, não encontrei desafios como bugs ou erros, achei na verdade a estruturação muito simples e fácil de entender.
+Apesar de ser a primeira experiência mexendo com docker, achei na verdade a estruturação muito simples e fácil de entender.
+Sobre os desafios, quando pedi pra um amigo tentar rodar o meu projeto na maquina dele, foi encontrado um erro, os containers de frontend e banco de dados subiam normalmente, mas o container de backend encontrava erro ao tentar encontrar o package express. Isso porque o meu dockerfile do backend usava npm install pra instalar as dependencias antes de copiar o package.json corretamente.
+Fiz a correção adicionando o comando copy package*.json ./ garantindo que meu npm install funcionasse, pois ele precisava dos arquivos package.json e package-lock.json.
 
 # Através das modificações no arquivo docker-compose-yml eu:
 . Criei um serviço db com a imagem oficial do PostgreSQL.
