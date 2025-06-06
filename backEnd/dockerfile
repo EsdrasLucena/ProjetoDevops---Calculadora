@@ -4,18 +4,14 @@ FROM node:18
 # Defino o diretório de trabalho dentro do container
 WORKDIR /app
 
-# Copio os arquivos de dependência primeiro e evito erros
-COPY package*.json ./
+# Copio os arquivos do projeto
+COPY . .
 
 # Instalando as dependências
 RUN npm install
-RUN npm i -g prisma
-
-# Copiando o restante do código
-COPY . .
 
 # Expondo a porta que o backend usa
 EXPOSE 3001
 
-# Comando para rodar a API
-CMD ["node", "server.js"]
+# Rodando os comandos do migration do prisma e levantando a aplicacao
+CMD npx prisma migrate deploy && node server.js

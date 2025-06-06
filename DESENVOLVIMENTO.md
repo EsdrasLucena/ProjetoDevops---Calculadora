@@ -14,11 +14,13 @@ A duração do projeto foi de 2 dias, como fiz sozinho, não utilizei metodologi
 # Os passos seguidos no desenvolvimento foram:
 . Planejamento e criação do projeto separando backend e frontend (Primeiro commit).
 . Dockerização de tudo isso (Segundo commit).
-. Por fim, criei o banco de dados e fiz as conexões necessárias (último commit).
+. Por fim, criei o banco de dados e fiz as conexões necessárias (terceiro commit).
+. Houveram muitos commits depois pra correção de erros e bugs, inclusive branches novas criadas pra ir testando as alterações sem perder o código da main.
 
-Apesar de ser a primeira experiência mexendo com docker, achei na verdade a estruturação muito simples e fácil de entender.
-Sobre os desafios, quando pedi pra um amigo tentar rodar o meu projeto na maquina dele, foi encontrado um erro, os containers de frontend e banco de dados subiam normalmente, mas o container de backend encontrava erro ao tentar encontrar o package express. Isso porque o meu dockerfile do backend usava npm install pra instalar as dependencias antes de copiar o package.json corretamente.
-Fiz a correção adicionando o comando copy package*.json ./ garantindo que meu npm install funcionasse, pois ele precisava dos arquivos package.json e package-lock.json.
+Apesar de ser a primeira experiência mexendo com docker, achei na verdade a estruturação muito simples e fácil de entender, mas houveram desafios.
+
+# Sobre os desafios
+quando pedi pra um amigo tentar rodar o meu projeto na maquina dele, foi encontrado um erro, os containers subiam normalmente, mas a tabela nao era criada no banco. Depois de quebrar muito a cabeça, forçei as migrations para serem feitas via comando no dockerfile do backend e automatizei essas migrations do prisma junto do projeto pra o senhor nao ter que rodar na mão e dar certo só com o docker compose up --build. Depois de muito tempo deu certo finalmente. Foi testado em linux e mac e também funcionou tudo.
 
 # Através das modificações no arquivo docker-compose-yml eu:
 . Criei um serviço db com a imagem oficial do PostgreSQL.
