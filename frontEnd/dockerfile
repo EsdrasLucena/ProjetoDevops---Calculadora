@@ -1,0 +1,11 @@
+# Usa uma imagem simples de servidor HTTP
+FROM nginx:alpine
+
+# Aqui to removendo o conteúdo padrão do nginx
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copiando os arquivos do frontend para a pasta do nginx
+COPY . /usr/share/nginx/html
+
+# Expondo a porta padrão do nginx
+EXPOSE 80
