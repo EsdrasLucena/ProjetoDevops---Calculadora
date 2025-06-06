@@ -10,9 +10,10 @@
   "author": "Esdras",
   "license": "ISC",
   "description": "Projeto devops , calculadora simples dockerizada",
-  
   "dependencies": {
+    "@prisma/client": "^6.9.0",
     "cors": "^2.8.5",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "prisma": "^6.9.0"
   }
 }
